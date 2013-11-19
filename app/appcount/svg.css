@@ -1,0 +1,43 @@
+/* SVG styling */
+svg {
+        width: 280px;
+        height: 270px;
+        margin-top: 75px;
+}
+
+#energychart{
+	display: block;
+	margin-left: 100px;
+}
+
+#energychart svg, #chart3 svg {
+        width: 570px
+        height: 570px;
+}
+#chart4 svg {
+        height: 470px;
+}
+
+#slider svg {
+	width: 500px;
+	height: 100px;
+	margin-top: 0px
+}
+
+path {
+        stroke: #777;
+        stroke-width: 0.1px;
+}
+
+.labels {
+        fill: #aaa;
+        font-weight: 200;
+        letter-spacing: -1px;
+}
+.labels.segment {
+        font-size: 10px;
+}
+
+#chart3 .labels {
+        fill: #555;
+}
