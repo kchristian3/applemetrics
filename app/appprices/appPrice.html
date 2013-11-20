@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>App Price</title>
+</head>
+
+<body>
+    <h3>App Prices</h3>
+    <h3 id="priceText">Please select a fan</h3>
+    <div>
+    <div id="mainInfo"></div>
+    <div id="partialInfo"></div>
+    </div>    
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript">
+    var width = 500,
+    height = 500,
+    radius = Math.min(width, height) / 2;
+
+    var color = ["#f0e8d1", "#eb91b7", "#b83755", "#b5c28a", "#362633", "#807780"];
+    var priceRange = ["Free", "$0.99", "$1.99", "$2-$4.99", "$5-$9.99", ">$9.99"];
+
+    var arc = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
+
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d.total; });
+
+    var svg = d3.select("#mainInfo").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("float","left")
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var rows = [];
+    d3.csv("app_price.csv",function(data){
+        data.forEach(function(d){
+            d.appPrice = +d.appPrice;
+            d.numberOfApps = +d.numberOfApps;
+            d.numberOfGames = +d.numberOfGames;
+            d.total = +d.total;
+            rows.push(d);                 
+        })
+
+        generateChart();
+    });
+
+    function generateChart(){
+    var g = svg.selectAll(".arc")
+      .data(pie(rows))
+      .enter().append("g")
+      .attr("class", "arc");
+     g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) {
+        return color[determineIndex(d.data.appPrice)];
+        })
+      .on("mouseover",function(){
+        d3.select(d3.event.target)
+        .attr("stroke","black")
+        .attr("stroke-width","3px");
+        var outputText;
+        if (this.__data__.data.appPrice != 0){
+            outputText = "price: "+this.__data__.data.appPrice;
+        }else{
+            outputText = "price: Free";
+        }
+        var colorIndex = determineIndex(this.__data__.data.appPrice);
+        if (colorIndex>2){
+            outputText +=" (in range "+priceRange[colorIndex]+")";
+            d3.select("#priceText").style("color",color[colorIndex]);
+        }else{
+            d3.select("#priceText").style("color","black");           
+        }
+        d3.select("#priceText")
+        .text(outputText);
+
+        var appGameData = [];
+        appGameData.push(this.__data__.data.numberOfApps);
+        appGameData.push(this.__data__.data.numberOfGames);        
+        displayPartialInfo(appGameData)
+      })
+      .on("mouseout",function(){
+        d3.select(d3.event.target)
+        .attr("stroke","none")
+        .attr("stroke-width","1px");
+        d3.select("#priceText")
+        .text("Please select a fan")
+        .style("color","black");
+        cleanPartialInfo()
+      });
+
+      g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .text(function(d) {
+        var index = determineIndex(d.data.appPrice); 
+        if (index<=2){
+            return priceRange[index];
+        }else{
+            return "";
+        }
+        });
+
+    }
+
+    function displayPartialInfo(appGameData){
+        var width = 200,
+        height = 200,
+        radius = Math.min(width, height) / 2;
+
+        var color = d3.scale.ordinal()
+        .range(["#abcdef", "#987654"]);
+
+        var arc = d3.svg.arc()
+            .outerRadius(radius - 10)
+            .innerRadius(radius - 40);
+
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d) { return d; });
+
+        var svg = d3.select("#partialInfo").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .style("float", "left")
+          .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        var g = svg.selectAll(".arc")
+            .data(pie(appGameData))
+            .enter().append("g")
+            .attr("class", "arc");
+
+        g.append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return color(d.data); });
+
+        g.append("text")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")
+          .text(function(d) { return d.data; });
+
+        //add legends
+        svg.append("rect")
+        .attr("x",-30)
+        .attr("y",-35)
+        .attr("width",10)
+        .attr("height",10)
+        .style("fill",'#987654');        
+        svg.append("text")
+        .attr("x",-15)
+        .attr("y",-27)
+        .text("Games");
+        svg.append("rect")
+        .attr("x",-30)
+        .attr("y",-15)
+        .attr("width",10)
+        .attr("height",10)
+        .style("fill","#abcdef");
+        svg.append("text")
+        .attr("x",-15)
+        .attr("y",-6)
+        .text("Apps");
+
+    }
+
+    function cleanPartialInfo(){
+        var partialInfo = d3.select("#partialInfo");
+        partialInfo.selectAll("*").remove();
+    }
+
+ 
+
+    //input an app price and return the index for coloring
+    function determineIndex(price){
+        if (price == 0){
+        return 0;
+        }else{
+        if (price<1){
+        return 1;
+        }else{
+        if (price<2){
+        return 2;
+        }else{
+        if (price<5){
+        return 3;
+        } else{
+        if (price<10){
+            return 4;
+        } else{
+            return 5;
+        }
+        }
+        }
+        }
+        }
+        }
+    </script>
+</body>
+</html>
