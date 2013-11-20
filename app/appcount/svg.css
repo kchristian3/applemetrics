@@ -1,17 +1,17 @@
 /* SVG styling */
 svg {
-        width: 280px;
-        height: 270px;
+        width: 350px;
+        height: 370px;
         margin-top: 75px;
 }
 
 #energychart{
 	display: block;
-	margin-left: 100px;
+	width: 1050px
 }
 
 #energychart svg, #chart3 svg {
-        width: 570px
+        width: 800px
         height: 570px;
 }
 #chart4 svg {

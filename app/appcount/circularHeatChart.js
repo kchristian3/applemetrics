@@ -6,6 +6,8 @@ function circularHeatChart() {
     segmentHeight = 20,
     domain = null,
     range = ["white", "red"],
+    rangeG = ["white", "blue"],
+    rangeA = ["white", "green"],
     accessor = function(d) {return d;},
     radialLabels = segmentLabels = [];
 
@@ -16,14 +18,18 @@ function circularHeatChart() {
             var offset = innerRadius + Math.ceil(data.length / numSegments) * segmentHeight;
             g = svg.append("g")
                 .classed("circular-heat", true)
-                .attr("transform", "translate(" + parseInt(margin.left + offset) + "," + parseInt(margin.top + offset) + ")");
+                .attr("transform", "translate(" + parseInt(margin.left + offset) + "," + parseInt(margin.top + offset) + ")")
+                //attempt to add id to 'g' so I can do linking/brushing between dates
+                .attr("id", function(d) { return "date" + d.date; })
+    			.on("mouseover", function(d) { highlight(d.date); })
+    			.on("mouseout", function(d) { highlight(null); });
 
             var autoDomain = false;
             if (domain === null) {
                 domain = d3.extent(data, accessor);
                 autoDomain = true;
             }
-            var color = d3.scale.linear().domain(domain).range(range);
+            var color = d3.scale.linear().domain(domain).range(rangeG);
             if(autoDomain)
                 domain = null;
 
@@ -81,7 +87,8 @@ function circularHeatChart() {
                 .append("textPath")
                 .attr("xlink:href", "#segment-label-path-"+id)
                 .attr("startOffset", function(d, i) {return i * 100 / numSegments + "%";})
-                .text(function(d) {return d;});
+         
+               .text(function(d) {return d;});
         });
 
     }
@@ -107,9 +114,11 @@ function circularHeatChart() {
         return chart;
     };
     
+    //used to modify the initial drawing point for the circle
+    //FYI in radians
     chart.scaleAngle = function(_) {
         if (!arguments.length) return scaleAngle;
-        scaleAngle = _;
+        scaleAngle = (_ * Math.PI)/180;
         return chart;
     };
 
@@ -164,4 +173,9 @@ function circularHeatChart() {
     };
 
     return chart;
+}
+
+function highlight(date) {
+  if (date == null) d3.selectAll("date").classed("active", false);
+  else d3.selectAll("date" + date).classed("active", true);
 }
