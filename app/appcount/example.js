@@ -1,15 +1,41 @@
-var chart = circularHeatChart()
+///////////////////////////////// Create Spirals //////////////////////////////////////
+
+var chartT = spiralTotalCount()
 	.accessor(function(d) {
 		return d.value;
 	})
-    .segmentHeight(12)
+    .segmentTotalHeight(15)
     .innerRadius(20)
-    .numSegments(6)
+    .numTotalSegments(6)
     .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     .segmentLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
-    .margin({top: 20, right: 0, bottom: 20, left: 0})
-    //.scaleAngle(d3.slider().value());
-   
+    .margin({top: 20, right: 0, bottom: 20, left: 0});
+    
+var chartA = spiralAppCount()
+	.accessor(function(d) {
+		return d.value;
+	})
+    .segmentAppHeight(12)
+    .innerRadius(20)
+    .numAppSegments(6)
+    .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+    .segmentLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
+    .margin({top: 20, right: 0, bottom: 20, left: 0});
+    
+var chartG = spiralGameCount()
+	.accessor(function(d) {
+		return d.value;
+	})
+    .segmentGameHeight(3)
+    .innerRadius(20)
+    .numGameSegments(6)
+    .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
+    .segmentLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
+    .margin({top: 20, right: 0, bottom: 20, left: 0});    
+
+
+///////////////////////////////// Data //////////////////////////////////////
+ 
 var dataA = [
 {date:	"Jan-08",value:	0, circle: 0},
 {date:	"Jan-09",value:	42790, circle: 0},
@@ -235,34 +261,44 @@ var dataT = [
 {date:	"Dec-13",value:	0	, circle: 2}
 ];
 
-//set the data to the graphs
-//total -> non-games -> games
-var energyData = [];
-for(var i=0; i<3; i++) {
-	energyData[i] = [];
-	for(var j=0; j<71; j++) {
-		if(i == 0){
-    		energyData[i][j] = dataT[j];
-    	} 
-    	else if(i == 1){
-    	 energyData[i][j] = dataA[j];
-    	}
-    	else energyData[i][j] = dataG[j];
-    }
-}    
+///////////////////////////////// Store Data //////////////////////////////////////
 
-//draw the chart
-d3.select('#energychart')
+var energyDataT = [];
+var energyDataA = [];
+var energyDataG = [];
+for(var i=0; i<71; i++) {
+	energyDataT[i] = dataT[i];
+	energyDataA[i] = dataA[i];
+	energyDataG[i] = dataG[i];
+}
+
+///////////////////////////////// Draw Spirals //////////////////////////////////////
+
+//draw the App Count spiral
+d3.select('#spiralAppCount')
     .selectAll('svg')
-    .data(energyData)
+    .data([energyDataA])
     .enter()
     .append('svg')
-    .call(chart);
+    .call(chartA);
     
-d3.select("#info")
-	.text('Total app count is 1,000,000');   
+//draw the Game Count spiral
+d3.select('#spiralGameCount')
+    .selectAll('svg')
+    .data([energyDataG])
+    .enter()
+    .append('svg')
+    .call(chartG);
+    
+//draw the Total Count spiral
+d3.select('#spiralTotalCount')
+    .selectAll('svg')
+    .data([energyDataT])
+    .enter()
+    .append('svg')
+    .call(chartT);  
 
-//slider to rotate the circles
+///////////////////////////////// Slider //////////////////////////////////////
 d3.select('#slider')
 	.call(d3.slider()
 		.axis(d3.svg.axis().orient("top").ticks(6))
@@ -271,26 +307,53 @@ d3.select('#slider')
 		.step(10)
 		.on("slide", function(evt, value) {
       		d3.select('#slider3text').text(value);
-      		d3.select('#energychart').selectAll('svg').call(chart.scaleAngle(value));
+      		d3.select('#spiralAppCount').selectAll('svg').call(chartA.scaleAngle(value));
+      		d3.select('#spiralGameCount').selectAll('svg').call(chartG.scaleAngle(value));
+      		d3.select('#spiralTotalCount').selectAll('svg').call(chartT.scaleAngle(value));
     	})
 	)
+	
+///////////////////////////////// MouseOver: DoD //////////////////////////////////////
 
-d3.selectAll("#energychart path")
+//Set default text    
+d3.select("#info")
+	.text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store'); 
 
+d3.selectAll("#spiralAppCount path")
 	.on('mouseover', function() {
         var d = d3.select(this).data()[0];; 
-        
-        //Details on demand
-        if(d.circle == 0){
-        	d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' non-game apps. ');
-        } else if(d.circle == 1){
-        	d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' game apps. ');
-        } else d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' total apps ');
+        d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' non-game apps. ');
     	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
 	});
 
-d3.selectAll("#energychart path")
+d3.selectAll("#spiralAppCount path")
 	.on('mouseout', function() {
-    d3.select("#info").text('Total app count is 1,000,000');  
+    d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
+    d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+});
+
+d3.selectAll("#spiralGameCount path")
+	.on('mouseover', function() {
+        var d = d3.select(this).data()[0];; 
+        d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' game apps. ');
+    	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
+	});
+
+d3.selectAll("#spiralGameCount path")
+	.on('mouseout', function() {
+    d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
+    d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+});
+
+d3.selectAll("#spiralTotalCount path")
+	.on('mouseover', function() {
+        var d = d3.select(this).data()[0];; 
+        d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' total apps. ');
+    	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
+	});
+
+d3.selectAll("#spiralTotalCount path")
+	.on('mouseout', function() {
+    d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
     d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
 });

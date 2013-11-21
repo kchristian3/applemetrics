@@ -1,21 +1,29 @@
 /* SVG styling */
 svg {
-        width: 350px;
-        height: 370px;
-        margin-top: 75px;
+        width: 400px;
+        height: 440px;
+        margin-top: 50px;
 }
 
-#energychart{
-	display: block;
-	width: 1050px
+#spiralTotalCount {
+	width: 400px;
 }
 
-#energychart svg, #chart3 svg {
-        width: 800px
+#spiralAppCount {
+	width: 340px;
+	padding-top: 36px;
+	padding-left: 70px;
+}
+
+#spiralGameCount {
+	width: 125px;
+	padding-top: 144px;
+	padding-left: 70px;
+}
+
+#spiralAppCount svg, #spiralGameCount svg, #spiralTotalCount svg {
+        width: 440px
         height: 570px;
-}
-#chart4 svg {
-        height: 470px;
 }
 
 #slider svg {
@@ -36,8 +44,4 @@ path {
 }
 .labels.segment {
         font-size: 10px;
-}
-
-#chart3 .labels {
-        fill: #555;
 }
