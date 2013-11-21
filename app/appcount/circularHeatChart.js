@@ -20,9 +20,7 @@ function circularHeatChart() {
                 .classed("circular-heat", true)
                 .attr("transform", "translate(" + parseInt(margin.left + offset) + "," + parseInt(margin.top + offset) + ")")
                 //attempt to add id to 'g' so I can do linking/brushing between dates
-                .attr("id", function(d) { return "date" + d.date; })
-    			.on("mouseover", function(d) { highlight(d.date); })
-    			.on("mouseout", function(d) { highlight(null); });
+                .attr("id", function(d) { return "date" + d.date; });
 
             var autoDomain = false;
             if (domain === null) {
