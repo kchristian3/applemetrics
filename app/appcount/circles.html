@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="utf-8">
+            <title>Circular heat chart example</title>
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="svg.css">
+                <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+        </head>
+
+        <body>
+        	<div id="info"></div>
+                <section>
+                <!-- Add pointers to the top of the circle
+                	<div class="pointers">
+        			<ul>
+        				<li class="pointer"><img src="arrow.gif"/></li>
+        				<li class="pointer"><img src="arrow.gif"/></li>
+        				<li class="pointer"><img src="arrow.gif"/></li>
+        			</ul>
+        			</div>
+        		--->
+                    <div class="chart" id="spiralTotalCount"></div>
+                    <div class="chart" id="spiralAppCount"></div>
+                    <div class="chart" id="spiralGameCount"></div>
+                </section>
+            <div id="slider"></div>
+            <div id="slider3text"></div>
+                <script src="http://d3js.org/d3.v3.min.js"></script>
+                <script src="d3.slider.js"></script>
+                <script src="spiralAppCount.js"></script>
+                <script src="spiralGameCount.js"></script>
+                <script src="spiralTotalCount.js"></script>
+                <script src="example.js"></script>
+                <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+        </body>
+</html>

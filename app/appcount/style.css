@@ -1,0 +1,129 @@
+/* Document styling */
+body {
+        width: 960px;
+        margin: 0 100px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+}
+section {
+        display: inline-flex;
+        height: 450px;
+}
+h1 {
+        font-size: 40px;
+        font-weight: 300;
+        letter-spacing: -2px;
+        margin: 1em 0 0.5em 0;
+}
+h2 {
+        font-weight: 300;
+}
+a {
+        color: #0088cc;
+        text-decoration: none;
+}
+a:hover {
+        color: #005580;
+        text-decoration: underline;
+}
+#info {
+        height: 20px;
+        font-size: 20px;
+        margin-top: 30px;
+        margin-left: 413px;
+        float: right;
+}
+
+.pointers ul {
+	display: flex;
+	list-style: none;
+}
+
+.pointer img {
+	width: 35px;
+	height: 35px;
+}
+
+#slider {
+	width: 450px;
+	margin-top: 45px;
+	margin-left: 340px
+}
+
+.d3-slider {
+    position: relative;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    border: 1px solid #aaaaaa;
+    z-index: 2;
+}
+
+.d3-slider-horizontal {
+    height: .8em;
+}  
+
+.d3-slider-vertical {
+    width: .8em;
+    height: 300px;
+}      
+
+.d3-slider-handle {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    background: #eee;
+    background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
+    z-index: 3;
+}
+
+.d3-slider-handle:hover {
+    border: 1px solid #999999;
+}
+
+.d3-slider-horizontal .d3-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+
+.d3-slider-axis {
+    position: relative;
+    z-index: 1;    
+}
+
+.d3-slider-axis-bottom {
+    top: .8em;
+}
+
+.d3-slider-axis-right {
+    left: .8em;
+}
+
+.d3-slider-axis path {
+    stroke-width: 0;
+    fill: none;
+}
+
+.d3-slider-axis line {
+    fill: none;
+    stroke: #aaa;
+    shape-rendering: crispEdges;
+}
+
+.d3-slider-axis text {
+    font-size: 11px;
+}
+
+.d3-slider-vertical .d3-slider-handle {
+    left: -.25em;
+    margin-left: 0;
+    margin-bottom: -.6em;
+
+footer {
+        margin: 50px 0 30px 0;
+}
+footer p {
+        font-size: 11px;
+}
