@@ -1,0 +1,536 @@
+[
+  {
+    "year": 2008,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 0.0,
+            "value2":0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 0.0,
+            "value2":0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 0.0,
+            "value2":0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 0.0,
+            "value2":0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 0.0,
+            "value2":0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 3,
+            "value2": 11,
+            "percent_world": 5
+        },
+      {
+        "code": "Jul",
+        "name": "Jul",
+        "value": 326,
+        "value2":996,
+        "percent_world": 0.059
+      },
+      {
+        "code": "Aug",
+        "name": "Aug",
+        "value": 334,
+        "value2":1069,
+        "percent_world": 0.305
+      },
+      {
+        "code": "Sept",
+        "name": "Sept",
+        "value": 465,
+        "value2":1475,
+        "percent_world": 0.258
+      },
+      {
+        "code": "Oct",
+        "name": "Oct",
+        "value": 596,
+          "value2":2063,
+        "percent_world": 0.014
+      },
+      {
+        "code": "Nov",
+        "name": "Nov",
+        "value": 674,
+          "value2":2312,
+        "percent_world": 0.0
+      },
+      {
+        "code": "Dec",
+        "name": "Dec",
+        "value": 817,
+          "value2":2971,
+        "percent_world": 0.03
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 892,
+            "value2": 3852,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 1051,
+            "value2":4933,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 1212,
+            "value2":5435,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 1436,
+            "value2":7258,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 1411,
+            "value2":6538,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 1569,
+            "value2":9087,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jul",
+            "name": "Jul",
+            "value": 1532,
+            "value2":8654,
+            "percent_world": 0.059
+        },
+        {
+            "code": "Aug",
+            "name": "Aug",
+            "value": 1936,
+            "value2":9682,
+            "percent_world": 0.305
+        },
+        {
+            "code": "Sept",
+            "name": "Sept",
+            "value": 2082,
+            "value2":10826,
+            "percent_world": 0.258
+        },
+        {
+            "code": "Oct",
+            "name": "Oct",
+            "value": 1988,
+            "value2":10013,
+            "percent_world": 0.014
+        },
+        {
+            "code": "Nov",
+            "name": "Nov",
+            "value": 2015,
+            "value2":11139,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Dec",
+            "name": "Dec",
+            "value": 3383,
+            "value2":22428,
+            "percent_world": 0.03
+        }
+    ]
+  },
+  {
+    "year": 2010,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 2528,
+            "value2": 19407,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 2557,
+            "value2": 17908,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 2509,
+            "value2": 16940,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 3271,
+            "value2": 16604,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 2292,
+            "value2": 15759,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 2700,
+            "value2": 16746,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jul",
+            "name": "Jul",
+            "value": 2593,
+            "value2": 16910,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Aug",
+            "name": "Aug",
+            "value": 2869,
+            "value2": 17260,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Sept",
+            "name": "Sept",
+            "value": 2320,
+            "value2": 15166,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Oct",
+            "name": "Oct",
+            "value": 2852,
+            "value2": 17521,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Nov",
+            "name": "Nov",
+            "value": 2620,
+            "value2": 16483,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Dec",
+            "name": "Dec",
+            "value": 4393,
+            "value2": 21607,
+            "percent_world": 0.0
+        }
+    ]
+  },
+  {
+    "year": 2011,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 2932,
+            "value2": 15898,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 3260,
+            "value2": 14644,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 3686,
+            "value2": 16931,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 3569,
+            "value2": 17163,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 2902,
+            "value2": 15861,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 3472,
+            "value2": 17747,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jul",
+            "name": "Jul",
+            "value": 3282,
+            "value2": 15826,
+            "percent_world": 0.059
+        },
+        {
+            "code": "Aug",
+            "name": "Aug",
+            "value": 3813,
+            "value2": 17933,
+            "percent_world": 0.305
+        },
+        {
+            "code": "Sept",
+            "name": "Sept",
+            "value": 3487,
+            "value2": 17597,
+            "percent_world": 0.258
+        },
+        {
+            "code": "Oct",
+            "name": "Oct",
+            "value": 3089,
+            "value2": 17914,
+            "percent_world": 0.014
+        },
+        {
+            "code": "Nov",
+            "name": "Nov",
+            "value": 3129,
+            "value2": 16958,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Dec",
+            "name": "Dec",
+            "value": 4744,
+            "value2": 19227,
+            "percent_world": 0.03
+        }
+    ]
+  },
+  {
+    "year": 2012,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 3818,
+            "value2": 18743,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 3437,
+            "value2": 17773,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 4083,
+            "value2": 21249,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 4181,
+            "value2": 21774,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 4216,
+            "value2": 23058,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 3565,
+            "value2": 18826,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jul",
+            "name": "Jul",
+            "value": 3490,
+            "value2": 17755,
+            "percent_world": 0.059
+        },
+        {
+            "code": "Aug",
+            "name": "Aug",
+            "value": 3646,
+            "value2": 18944,
+            "percent_world": 0.305
+        },
+        {
+            "code": "Sept",
+            "name": "Sept",
+            "value": 4175,
+            "value2": 22862,
+            "percent_world": 0.258
+        },
+        {
+            "code": "Oct",
+            "name": "Oct",
+            "value": 3887,
+            "value2": 23247,
+            "percent_world": 0.014
+        },
+        {
+            "code": "Nov",
+            "name": "Nov",
+            "value": 3978,
+            "value2": 24613,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Dec",
+            "name": "Dec",
+            "value": 4880,
+            "value2": 22752,
+            "percent_world": 0.03
+        }
+    ]
+  },
+  {
+    "year": 2013,
+    "values": [
+        {
+            "code": "Jan",
+            "name": "Jan",
+            "value": 4148,
+            "value2": 24851,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Feb",
+            "name": "Feb",
+            "value": 3778,
+            "value2": 22053,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Mar",
+            "name": "Mar",
+            "value": 4467,
+            "value2": 24047,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Apr",
+            "name": "Apr",
+            "value": 4777,
+            "value2": 25679,
+            "percent_world": 0.0
+        },
+        {
+            "code": "May",
+            "name": "May",
+            "value": 4688,
+            "value2": 26291,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jun",
+            "name": "Jun",
+            "value": 3913,
+            "value2": 21666,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Jul",
+            "name": "Jul",
+            "value": 4697,
+            "value2": 23403,
+            "percent_world": 0.059
+        },
+        {
+            "code": "Aug",
+            "name": "Aug",
+            "value": 4607,
+            "value2": 22098,
+            "percent_world": 0.305
+        },
+        {
+            "code": "Sept",
+            "name": "Sept",
+            "value": 4545,
+            "value2": 26005,
+            "percent_world": 0.258
+        },
+        {
+            "code": "Oct",
+            "name": "Oct",
+            "value": 5268,
+            "value2": 27451,
+            "percent_world": 0.014
+        },
+        {
+            "code": "Nov",
+            "name": "Nov",
+            "value": 0,
+            "value2": 0,
+            "percent_world": 0.0
+        },
+        {
+            "code": "Dec",
+            "name": "Dec",
+            "value": 0,
+            "value2": 0,
+            "percent_world": 0.03
+        }
+    ]
+  }
+]
