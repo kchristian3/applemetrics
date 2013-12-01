@@ -4,31 +4,54 @@
     <title>Submissions</title>
     <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="tipsy.js"></script>
+    <link rel="stylesheet" type="text/css" href="tipsy.css">
     <style type="text/css">
 
 svg {
-  width: 1580px;
-  height: 500px;
-  border: solid 1px #ccc;
+  /*width: 1580px;
+  height: 500px;*/
+  /*border: solid 1px #ccc;*/
   font: 10px sans-serif;
   shape-rendering: crispEdges;
+}
+#xAxisLabel{
+  font: 20px sans-serif;
+}
+.bubble {
+  stroke: none;
+}
+
+/*bar graph lable*/
+.bubble_text {
+  fill: #000;
+  font: 15px sans-serif;
 }
 
     </style>
   </head>
+  <div id="container">
+    </div>
   <body>
+    <div id = "graph">
+    </div>
+    <div id ="xAxisLabel">
+    </div>
     <script type="text/javascript">
 
 var w = 1560,
     h = 300,
     p = [20, 50, 30, 20],
+    xName = "2008 - 2013"
+    lData = [{"label":"Apps", "value":10}, 
+            {"label":"Games", "value":10}],
     x = d3.scale.ordinal().rangeRoundBands([0, w - p[1] - p[3]]),
     y = d3.scale.linear().range([0, h - p[0] - p[2]]),
-    z = d3.scale.ordinal().range(["lightpink", "darkgray"]),
+    z = d3.scale.ordinal().range(["#FF0700", "#01939A"]),
     parse = d3.time.format("%b/%Y").parse,
     format = d3.time.format("%b");
 
-var svg = d3.select("body").append("svg:svg")
+var svg = d3.select("#graph").append("svg:svg")
     .attr("width", w)
     .attr("height", h)
   .append("svg:g")
@@ -47,7 +70,53 @@ d3.csv("stacked.csv", function(subs) {
   x.domain(types[0].map(function(d) { return d.x; }));
   y.domain([0, d3.max(types[types.length - 1], function(d) { return d.y0 + d.y; })]);
 
+
   // Add a group for each type.
+  var legend = d3.select("#container").append("svg")
+    .attr("width", 1500)
+    .attr("height", 100);
+
+  legend.selectAll(".bubble")
+  .data(lData)
+  .enter()
+    .append("circle")
+    .attr("class", "bubble")               
+    .style("fill", function(d, i) { return z(i); })
+    .attr("cx", function(d, i) {
+      return 700 + i*100;
+    })
+    .attr("cy", 50)
+    .attr("r", function(d) {
+      return d.value;
+    });
+
+  legend.selectAll(".bubble_text")
+  .data(lData)
+  .enter()
+    .append("text")
+    .text(function(d) {
+      return d.label;
+    })
+    .attr("class", "bubble_text")
+    .attr("x",  function (d, i) {
+      return 740 + i*100;
+    })
+    .attr("text-anchor", "middle")
+    .attr("y", 50+5);
+
+  var xAxis = d3.select("#xAxisLabel").append("svg")
+    .attr("width", 1500)
+    .attr("height", 100);
+  xAxis.selectAll(".bubble_text")
+  .data(xName)
+  .enter()
+    .append("text")
+    .text("2008 - 2013")
+    .attr("class", "bubble_text")
+    .attr("x",840)
+    .attr("text-anchor", "middle")
+    .attr("y", 50+5);
+
   var type = svg.selectAll("g.type")
       .data(types)
     .enter().append("svg:g")
@@ -90,8 +159,23 @@ d3.csv("stacked.csv", function(subs) {
       .attr("x", -10)//w - p[1] - p[3] + 6)
       .attr("dy", ".35em")
       .text(d3.format(",d"));
-});
 
+$('rect').mouseover(function() {
+  console.log(this);
+  d3.select(this).style("fill-opacity", "0.5").style("cursor", "pointer");
+});
+$('rect').mouseout(function() {
+  d3.select(this).style("fill-opacity", "1");
+});
+$('rect').tipsy({ 
+          gravity: 'e', 
+          html: true, 
+          title: function() {
+            var d = this.__data__;
+          return d.y;
+          }
+        });
+});
     </script>
   </body>
 </html>
