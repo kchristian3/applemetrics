@@ -4,16 +4,17 @@ function spiralAppCount() {
     innerRadius = 50,
     numAppSegments = 24,
     segmentAppHeight = 20,
+    segmentLabelDisplay = "none",
     domain = null,
-    range = ["white", "orange"],
-    accessor = function(d) {return d;},
+    range = ["white", "#01939A"],
+    accessor = function(d) {return d.value;},
     radialLabels = segmentLabels = [];
 
     function chartA(selection) {
         selection.each(function(data) {
             var appSvg = d3.select(this);
 
-            var appOffset = innerRadius + Math.ceil(data.length / numAppSegments) * segmentAppHeight;
+            var appOffset = innerRadius + Math.ceil(data.length / numAppSegments) * (segmentAppHeight + scaleAngle);
             g = appSvg.append("g")
                 .classed("circular-app", true)
                 .attr("transform", "translate(" + parseInt(margin.left + appOffset) + "," + parseInt(margin.top + appOffset) + ")")
@@ -31,8 +32,10 @@ function spiralAppCount() {
 
             g.selectAll("path").data(data)
                 .enter().append("path")
-                .attr("d", d3.svg.arc().innerRadius(irApp).outerRadius(orApp).startAngle(saApp).endAngle(eaApp))
-                .attr("fill", function(d) {return appColor(accessor(d));});
+                .attr("class", function(d) { return "date " + d.date;})
+                .attr("id", function(d) { return "appSpiral";})
+            	.attr("d", d3.svg.arc().innerRadius(irApp).outerRadius(orApp).startAngle(saApp).endAngle(eaApp))
+            	.attr("fill", function(d) {return appColor(accessor(d));});
 
 
             // Unique id so that the text path defs are unique - is there a better way to do this?
@@ -51,7 +54,7 @@ function spiralAppCount() {
                 .append("path")
                 .attr("id", function(d, i) {return "appRadial-label-path-"+appID+"-"+i;})
                 .attr("d", function(d, i) {
-                    var r = innerRadius + ((i + 0.2) * segmentAppHeight);
+                    var r = innerRadius + ((i + 0.2) * (segmentAppHeight + scaleAngle));
                     return "m" + r * Math.sin(lsa) + " -" + r * Math.cos(lsa) + 
                             " a" + r + " " + r + " 0 1 1 -1 0";
                 });
@@ -61,12 +64,12 @@ function spiralAppCount() {
                 .append("text")
                 .append("textPath")
                 .attr("xlink:href", function(d, i) {return "#appRadial-label-path-"+appID+"-"+i;})
-                .style("font-size", 0.6 * segmentAppHeight + 'px')
+                .style("font-size", 0.6 * (segmentAppHeight + scaleAngle) + 'px')
                 .text(function(d) {return d;});
 
             //Segment labels
             var segmentLabelOffset = 2;
-            var appR = innerRadius + Math.ceil(data.length / numAppSegments) * segmentAppHeight + segmentLabelOffset;
+            var appR = innerRadius + Math.ceil(data.length / numAppSegments) * (segmentAppHeight + scaleAngle) + segmentLabelOffset;
             appLabels = appSvg.append("g")
                 .classed("appLabels", true)
                 .classed("appSegment", true)
@@ -82,25 +85,29 @@ function spiralAppCount() {
                 .append("text")
                 .append("textPath")
                 .attr("xlink:href", "#appSegment-label-path-"+appID)
-                .attr("startOffset", function(d, i) {return i * 100 / numAppSegments + "%";})
-         
-               .text(function(d) {return d;});
+                .attr("startOffset", function(d, i) {
+                	var ret;
+                	ret = ((i * 100) / numAppSegments);
+                	return (ret + (scaleAngle*(100/numAppSegments))) + "%";
+                })
+         		.attr("id", "appSegmentLabel")
+         		.text(function(d) {return d;});
         });
 
     }
 
     /* Arc functions */
     irApp = function(d, i) {
-        return innerRadius + Math.floor(i/numAppSegments) * segmentAppHeight;
+        return innerRadius + Math.floor(i/numAppSegments) * (segmentAppHeight + scaleAngle);
     }
     orApp = function(d, i) {
-        return innerRadius + segmentAppHeight + Math.floor(i/numAppSegments) * segmentAppHeight;
+        return innerRadius + (segmentAppHeight + scaleAngle) + Math.floor(i/numAppSegments) * (segmentAppHeight + scaleAngle);
     }
     saApp = function(d, i) {
-        return ((i * 2 * Math.PI) / numAppSegments) + scaleAngle;
+        return ((i * 2 * Math.PI) / numAppSegments); // + scaleAngle;
     }
     eaApp = function(d, i) {
-        return (((i + 1) * 2 * Math.PI) / numAppSegments) + scaleAngle;
+        return (((i + 1) * 2 * Math.PI) / numAppSegments); // + scaleAngle;
     }
 
     /* Configuration getters/setters */
@@ -115,6 +122,12 @@ function spiralAppCount() {
     chartA.scaleAngle = function(_) {
         if (!arguments.length) return scaleAngle;
         scaleAngle = (_ * Math.PI)/180;
+        return chartA;
+    };
+    
+    chartA.segmentLabelDisplay = function(_) {
+        if (!arguments.length) return segmentLabelDisplay;
+        segmentLabelDisplay = _;
         return chartA;
     };
 

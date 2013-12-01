@@ -31,13 +31,19 @@ a:hover {
         height: 20px;
         font-size: 20px;
         margin-top: 30px;
-        margin-left: 413px;
+        margin-left: 70px;
         float: right;
+}
+
+.date.active {
+	stroke-width: 3px;
 }
 
 .pointers ul {
 	display: flex;
 	list-style: none;
+	padding-top: 20px;
+	margin: 0px;
 }
 
 .pointer img {
@@ -48,7 +54,7 @@ a:hover {
 #slider {
 	width: 450px;
 	margin-top: 45px;
-	margin-left: 340px
+	margin-left: 310px
 }
 
 .d3-slider {

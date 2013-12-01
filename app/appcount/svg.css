@@ -1,8 +1,8 @@
 /* SVG styling */
 svg {
-        width: 400px;
+        width: 480px;
         height: 440px;
-        margin-top: 50px;
+        margin-top: 20px;
 }
 
 #spiralTotalCount {
@@ -10,20 +10,36 @@ svg {
 }
 
 #spiralAppCount {
-	width: 340px;
-	padding-top: 36px;
-	padding-left: 70px;
+	width: 440px;
+	padding-top: 10px;
+	padding-left: 30px;
 }
 
 #spiralGameCount {
-	width: 125px;
-	padding-top: 144px;
-	padding-left: 70px;
+	width: 250px;
+	padding-top: 10px;
+	padding-left: 165px;
 }
 
 #spiralAppCount svg, #spiralGameCount svg, #spiralTotalCount svg {
         width: 440px
         height: 570px;
+}
+
+#gradient {
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+#gameBar, #appBar {
+	width: 1000px;
+	height: 30px;
+}
+
+#appBar svg, #gameBar svg{
+	width: 900px;
+	height: 40px;
+	margin: 0px;
 }
 
 #slider svg {

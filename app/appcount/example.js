@@ -1,5 +1,6 @@
 ///////////////////////////////// Create Spirals //////////////////////////////////////
 
+/*
 var chartT = spiralTotalCount()
 	.accessor(function(d) {
 		return d.value;
@@ -10,12 +11,13 @@ var chartT = spiralTotalCount()
     .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     .segmentLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
     .margin({top: 20, right: 0, bottom: 20, left: 0});
+    */
     
 var chartA = spiralAppCount()
 	.accessor(function(d) {
 		return d.value;
 	})
-    .segmentAppHeight(12)
+    .segmentAppHeight(15)
     .innerRadius(20)
     .numAppSegments(6)
     .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
@@ -26,7 +28,7 @@ var chartG = spiralGameCount()
 	.accessor(function(d) {
 		return d.value;
 	})
-    .segmentGameHeight(3)
+    .segmentGameHeight(15)
     .innerRadius(20)
     .numGameSegments(6)
     .radialLabels(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
@@ -108,7 +110,7 @@ var dataA = [
 {date:	"Dec-10",value:	188294, circle: 0},
 {date:	"Dec-11",value:	317678, circle: 0},
 {date:	"Dec-12",value:	520241, circle: 0},
-{date:	"Dec-13",value:	0, circle: 0}
+{date:	"Dec-13",value:	0, circle: 0},
 ];
    
 var dataG = [ 
@@ -183,7 +185,7 @@ var dataG = [
 {date:	"Dec-10",value:	64255, circle: 1},
 {date:	"Dec-11",value:	91683, circle: 1},
 {date:	"Dec-12",value:	128951, circle: 1},
-{date:	"Dec-13",value:	0, circle: 1}
+{date:	"Dec-13",value:	0, circle: 1},
 ];
 
 var dataT = [
@@ -258,7 +260,7 @@ var dataT = [
 {	date:	"Dec-10"	,	value:	252549	, circle: 2},
 {	date:	"Dec-11"	,	value:	409361	, circle: 2},
 {	date:	"Dec-12"	,	value:	649192	, circle: 2},
-{date:	"Dec-13",value:	0	, circle: 2}
+{date:	"Dec-13",value:	0	, circle: 2},
 ];
 
 ///////////////////////////////// Store Data //////////////////////////////////////
@@ -266,7 +268,7 @@ var dataT = [
 var energyDataT = [];
 var energyDataA = [];
 var energyDataG = [];
-for(var i=0; i<71; i++) {
+for(var i=0; i<72; i++) {
 	energyDataT[i] = dataT[i];
 	energyDataA[i] = dataA[i];
 	energyDataG[i] = dataG[i];
@@ -290,6 +292,7 @@ d3.select('#spiralGameCount')
     .append('svg')
     .call(chartG);
     
+/*
 //draw the Total Count spiral
 d3.select('#spiralTotalCount')
     .selectAll('svg')
@@ -297,6 +300,7 @@ d3.select('#spiralTotalCount')
     .enter()
     .append('svg')
     .call(chartT);  
+*/
 
 ///////////////////////////////// Slider //////////////////////////////////////
 d3.select('#slider')
@@ -307,9 +311,36 @@ d3.select('#slider')
 		.step(10)
 		.on("slide", function(evt, value) {
       		d3.select('#slider3text').text(value);
+      		d3.select('#appSegmentLabel').text(function(d) {return d;});
       		d3.select('#spiralAppCount').selectAll('svg').call(chartA.scaleAngle(value));
       		d3.select('#spiralGameCount').selectAll('svg').call(chartG.scaleAngle(value));
-      		d3.select('#spiralTotalCount').selectAll('svg').call(chartT.scaleAngle(value));
+      		
+     		//Redraw app count DoD pointers
+     		d3.selectAll("#spiralAppCount path")
+				.on('mouseover', function() {
+        			var d = d3.select(this).data()[0];; 
+        			d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' non-game apps. ');
+    				d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});
+			});
+			d3.selectAll("#spiralAppCount path")
+				.on('mouseout', function() {
+    				d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
+    				d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+			});
+			
+			//Redraw games DoD pointers
+			d3.selectAll("#spiralGameCount path")
+				.on('mouseover', function() {
+        			var d = d3.select(this).data()[0];; 
+        			d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' game apps. ');
+    				d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
+			});
+			d3.selectAll("#spiralGameCount path")
+				.on('mouseout', function() {
+    				d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
+    				d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+			});
+			
     	})
 	)
 	
@@ -317,19 +348,21 @@ d3.select('#slider')
 
 //Set default text    
 d3.select("#info")
-	.text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store'); 
+	.text('From 0 apps in Jun-08 to 894151 total apps in Sept-13 in the Apple app store'); 
 
 d3.selectAll("#spiralAppCount path")
 	.on('mouseover', function() {
         var d = d3.select(this).data()[0];; 
         d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' non-game apps. ');
     	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
+    	highlight(d.date);
 	});
 
 d3.selectAll("#spiralAppCount path")
 	.on('mouseout', function() {
-    d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
-    d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+    	d3.select("#info").text('From 0 apps in Jun-08 to 894151 total apps in Sept-13 in the Apple app store');  
+    	d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});    
+    	highlight(null);  
 });
 
 d3.selectAll("#spiralGameCount path")
@@ -337,14 +370,17 @@ d3.selectAll("#spiralGameCount path")
         var d = d3.select(this).data()[0];; 
         d3.select("#info").text(' In ' + d.date +' there were ' + d.value + ' game apps. ');
     	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});	
+    	highlight(d.date);
 	});
 
 d3.selectAll("#spiralGameCount path")
 	.on('mouseout', function() {
-    d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
-    d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
+    	d3.select("#info").text('From 0 apps in Jun-08 to 894151 total apps in Sept-13 in the Apple app store');  
+    	d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'}); 
+    	highlight(null);   
 });
 
+/*
 d3.selectAll("#spiralTotalCount path")
 	.on('mouseover', function() {
         var d = d3.select(this).data()[0];; 
@@ -357,3 +393,9 @@ d3.selectAll("#spiralTotalCount path")
     d3.select("#info").text('From Jun-08 when the app store opened with 0 apps to Sept-13 there are 894151 total apps in the Apple app store');  
     d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});      
 });
+*/
+
+function highlight(date) {
+  if (date == null) d3.selectAll(".date").classed("active", false);
+  else d3.selectAll(".date." + date).classed("active", true);
+}
