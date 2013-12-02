@@ -5,7 +5,7 @@ function spiralGameCount() {
     numGameSegments = 24,
     segmentGameHeight = 20,
     domain = null,
-    range = ["white", "green"],
+    range = ["white", "#FF0700"],
     accessor = function(d) {return d;},
     radialLabels = segmentLabels = [];
 
@@ -31,6 +31,8 @@ function spiralGameCount() {
 
             g.selectAll("path").data(data)
                 .enter().append("path")
+                .attr("class", function(d) { return "date " + d.date;})
+                .attr("id", function(d) { return "gameSpiral";})
                 .attr("d", d3.svg.arc().innerRadius(irGame).outerRadius(orGame).startAngle(saGame).endAngle(eaGame))
                 .attr("fill", function(d) {return gameColor(accessor(d));});
 
@@ -82,7 +84,11 @@ function spiralGameCount() {
                 .append("text")
                 .append("textPath")
                 .attr("xlink:href", "#gameSegment-label-path-"+gameID)
-                .attr("startOffset", function(d, i) {return i * 100 / numGameSegments + "%";})
+                .attr("startOffset", function(d, i) {
+                	var ret;
+                	ret = ((i * 100) / numGameSegments);
+                	return (ret + (scaleAngle*(100/numGameSegments))) + "%";
+                })
          
                .text(function(d) {return d;});
         });
@@ -97,10 +103,16 @@ function spiralGameCount() {
         return innerRadius + segmentGameHeight + Math.floor(i/numGameSegments) * segmentGameHeight;
     }
     saGame = function(d, i) {
-        return ((i * 2 * Math.PI) / numGameSegments) + scaleAngle;
+        var ret;
+        ret = ((i * 2 * Math.PI) / numGameSegments) + scaleAngle;
+        //ret = ret % 6.28;
+        return ret;
     }
     eaGame = function(d, i) {
-        return (((i + 1) * 2 * Math.PI) / numGameSegments) + scaleAngle;
+    	var ret;
+    	ret = (((i + 1) * 2 * Math.PI) / numGameSegments) + scaleAngle;
+    	//ret = ret % 6.28;
+        return ret;
     }
 
     /* Configuration getters/setters */
