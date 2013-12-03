@@ -7,19 +7,24 @@
 
 <body>
     <h3>App Prices</h3>
-    <h3 id="priceText">Please select a fan</h3>
+    <h3 id="priceText">Please select a fan or a price</h3>
+    <center>
     <div>
-    <div id="mainInfo"></div>
-    <div id="partialInfo"></div>
-    </div>    
+    <span id="price" style="float:left; margin-top: 100px;"></span>
+    <div id="mainInfo"  style="margin-top:-100px"></div>
+    <span id="partialInfo"></span>
+    </div>
+    </center>    
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
     var width = 500,
     height = 500,
     radius = Math.min(width, height) / 2;
 
-    var color = ["#f0e8d1", "#eb91b7", "#b83755", "#b5c28a", "#362633", "#807780"];
+    var color = ["#FFD173", "#FFAB00","#FF7600", "#FF4540", "#FF0700","#01939A"];
+    //var color = ["#f0e8d1", "#eb91b7", "#b83755", "#b5c28a", "#362633", "#807780"];
     var priceRange = ["Free", "$0.99", "$1.99", "$2-$4.99", "$5-$9.99", ">$9.99"];
+    var colorscale = d3.scale.ordinal().range(color);
 
     var arc = d3.svg.arc()
     .outerRadius(radius - 10)
@@ -32,7 +37,7 @@
     var svg = d3.select("#mainInfo").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style("float","left")
+    //.style("float","left")
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
@@ -45,19 +50,77 @@
             d.total = +d.total;
             rows.push(d);                 
         })
-
+        generatePriceList();
         generateChart();
     });
+
+    function generatePriceList(){
+        d3.select("#price")
+        .append("select")
+        .selectAll("option")
+        .data(rows) 
+        .enter()
+        .append("option")
+        .text(function(d){
+            return d.appPrice;
+        })
+        .on("mouseover",function(){
+            var thisPriceData = (d3.select(d3.event.target)
+            .style("background-color","#34C6CD")
+            .data())[0];
+
+            d3.selectAll(".arc")
+            .filter(function(d){
+                if (thisPriceData.appPrice==d.data.appPrice)
+                    console.log("in "+thisPriceData.appPrice);
+                return (thisPriceData.appPrice==d.data.appPrice);
+            })
+            .attr("stroke","black")
+            .attr("stroke-width","3px");
+
+                    var outputText;
+        if (thisPriceData.appPrice != 0){
+            outputText = "price: "+thisPriceData.appPrice;
+        }else{
+            outputText = "price: Free";
+        }
+        var colorIndex = determineIndex(thisPriceData.appPrice);
+
+            outputText +=" (in range "+priceRange[colorIndex]+")";
+            d3.select("#priceText").style("color",colorscale(thisPriceData.appPrice));
+        d3.select("#priceText")
+        .text(outputText);
+
+            var appGameData = [];
+            appGameData.push(thisPriceData.numberOfApps);
+            appGameData.push(thisPriceData.numberOfGames);        
+            displayPartialInfo(appGameData)
+        })
+        .on("mouseout",function(){
+            var thisPriceData = (d3.select(d3.event.target)
+            .style("background-color","white").data())[0];
+
+            d3.selectAll(".arc")
+            .filter(function(d){
+                return (thisPriceData.appPrice==d.data.appPrice);
+            }) 
+            .attr("stroke","none");
+
+            cleanPartialInfo();
+        });
+    }
 
     function generateChart(){
     var g = svg.selectAll(".arc")
       .data(pie(rows))
       .enter().append("g")
-      .attr("class", "arc");
+      .attr("class", "arc")
+      .attr("stroke-width","1px");
      g.append("path")
       .attr("d", arc)
       .style("fill", function(d) {
-        return color[determineIndex(d.data.appPrice)];
+        return colorscale(d.data.appPrice);
+        //color[determineIndex(d.data.appPrice)];
         })
       .on("mouseover",function(){
         d3.select(d3.event.target)
@@ -70,12 +133,9 @@
             outputText = "price: Free";
         }
         var colorIndex = determineIndex(this.__data__.data.appPrice);
-        if (colorIndex>2){
+
             outputText +=" (in range "+priceRange[colorIndex]+")";
-            d3.select("#priceText").style("color",color[colorIndex]);
-        }else{
-            d3.select("#priceText").style("color","black");           
-        }
+            d3.select("#priceText").style("color",colorscale(this.__data__.data.appPrice));
         d3.select("#priceText")
         .text(outputText);
 
@@ -86,10 +146,9 @@
       })
       .on("mouseout",function(){
         d3.select(d3.event.target)
-        .attr("stroke","none")
-        .attr("stroke-width","1px");
+        .attr("stroke","none");
         d3.select("#priceText")
-        .text("Please select a fan")
+        .text("Please select a fan or a price")
         .style("color","black");
         cleanPartialInfo()
       });
@@ -115,7 +174,7 @@
         radius = Math.min(width, height) / 2;
 
         var color = d3.scale.ordinal()
-        .range(["#abcdef", "#987654"]);
+        .range(["#01939A", "#FF0700"]);
 
         var arc = d3.svg.arc()
             .outerRadius(radius - 10)
@@ -128,7 +187,7 @@
         var svg = d3.select("#partialInfo").append("svg")
             .attr("width", width)
             .attr("height", height)
-            .style("float", "left")
+            .style("float","right")
           .append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
@@ -153,7 +212,7 @@
         .attr("y",-35)
         .attr("width",10)
         .attr("height",10)
-        .style("fill",'#987654');        
+        .style("fill","#FF0700");        
         svg.append("text")
         .attr("x",-15)
         .attr("y",-27)
@@ -163,7 +222,7 @@
         .attr("y",-15)
         .attr("width",10)
         .attr("height",10)
-        .style("fill","#abcdef");
+        .style("fill",'#01939A');
         svg.append("text")
         .attr("x",-15)
         .attr("y",-6)
