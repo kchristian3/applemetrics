@@ -4,6 +4,8 @@ function spiralAppCount() {
     innerRadius = 50,
     numAppSegments = 24,
     segmentAppHeight = 20,
+    indx = 0,
+    labelOpacity = "0",
     segmentLabelDisplay = "none",
     domain = null,
     range = ["white", "#01939A"],
@@ -32,7 +34,11 @@ function spiralAppCount() {
 
             g.selectAll("path").data(data)
                 .enter().append("path")
-                .attr("class", function(d) { return "date " + d.date;})
+                .attr("class", function(d) { 
+                	var ret =  "date " + d.date + " " + indx;
+                	indx++;
+                	return ret;
+                })
                 .attr("id", function(d) { return "appSpiral";})
             	.attr("d", d3.svg.arc().innerRadius(irApp).outerRadius(orApp).startAngle(saApp).endAngle(eaApp))
             	.attr("fill", function(d) {return appColor(accessor(d));});
@@ -63,8 +69,10 @@ function spiralAppCount() {
                 .data(radialLabels).enter()
                 .append("text")
                 .append("textPath")
+                .style("opacity", "0")
+                .attr("id", "appLabelText")
                 .attr("xlink:href", function(d, i) {return "#appRadial-label-path-"+appID+"-"+i;})
-                .style("font-size", 0.6 * (segmentAppHeight + scaleAngle) + 'px')
+                .style("font-size", 0.4 * (segmentAppHeight + scaleAngle) + 'px')
                 .text(function(d) {return d;});
 
             //Segment labels
@@ -84,14 +92,16 @@ function spiralAppCount() {
                 .data(segmentLabels).enter()
                 .append("text")
                 .append("textPath")
+                .style("opacity", "0")
+                .attr("id", "appLabelText")
                 .attr("xlink:href", "#appSegment-label-path-"+appID)
                 .attr("startOffset", function(d, i) {
                 	var ret;
                 	ret = ((i * 100) / numAppSegments);
                 	return (ret + (scaleAngle*(100/numAppSegments))) + "%";
                 })
-         		.attr("id", "appSegmentLabel")
-         		.text(function(d) {return d;});
+         
+               .text(function(d) {return d;});
         });
 
     }
@@ -122,6 +132,12 @@ function spiralAppCount() {
     chartA.scaleAngle = function(_) {
         if (!arguments.length) return scaleAngle;
         scaleAngle = (_ * Math.PI)/180;
+        return chartA;
+    };
+    
+    chartA.labelOpacity = function(_) {
+        if (!arguments.length) return labelOpacity;
+        labelOpacity = _;
         return chartA;
     };
     

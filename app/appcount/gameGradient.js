@@ -1,5 +1,5 @@
-var wGame = 1000,
-    hGame = 30;
+var wGame = 30,
+    hGame = 500;
 
 var gameGradSvg = d3.select("#gameBar").append("svg")
     .attr("width", wGame)
@@ -8,10 +8,10 @@ var gameGradSvg = d3.select("#gameBar").append("svg")
 var gameGradient = gameGradSvg.append("defs")
   .append("linearGradient")
     .attr("id", "gameGradient")
-    .attr("x1", "0%")
-    .attr("y1", "0%")
-    .attr("x2", "100%")
-    .attr("y2", "100%")
+    .attr("x1", "100%")
+    .attr("y1", "100%")
+    .attr("x2", "0%")
+    .attr("y2", "0%")
     .attr("gameSpreadMethod", "pad");
 
 gameGradient.append("stop")

@@ -1,5 +1,5 @@
-var wApp = 1000,
-    hApp = 30;
+var wApp = 30,
+    hApp = 500;
 
 var appGradSvg = d3.select("#appBar").append("svg")
     .attr("width", wApp)
@@ -8,10 +8,10 @@ var appGradSvg = d3.select("#appBar").append("svg")
 var gradient = appGradSvg.append("defs")
   .append("linearGradient")
     .attr("id", "appGradient")
-    .attr("x1", "0%")
-    .attr("y1", "0%")
-    .attr("x2", "100%")
-    .attr("y2", "100%")
+    .attr("x1", "100%")
+    .attr("y1", "100%")
+    .attr("x2", "0%")
+    .attr("y2", "0%")
     .attr("appSpreadMethod", "pad");
 
 gradient.append("stop")

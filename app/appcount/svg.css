@@ -5,47 +5,41 @@ svg {
         margin-top: 20px;
 }
 
-#spiralTotalCount {
-	width: 400px;
-}
-
 #spiralAppCount {
-	width: 440px;
+	width: 430px;
 	padding-top: 10px;
-	padding-left: 30px;
+
 }
 
 #spiralGameCount {
-	width: 250px;
+	width: 430px;
 	padding-top: 10px;
-	padding-left: 165px;
 }
 
 #spiralAppCount svg, #spiralGameCount svg, #spiralTotalCount svg {
-        width: 440px
+        width: 430px;
         height: 570px;
 }
 
 #gradient {
-	margin-left: 100px;
+	margin-left: 5px;
 	margin-top: 10px;
+	padding-top: 65px;
+}
+
+#gradient tr td{
+	text-align: center;
 }
 
 #gameBar, #appBar {
-	width: 1000px;
-	height: 30px;
+	width: 30px;
+	height: 300px;
 }
 
 #appBar svg, #gameBar svg{
-	width: 900px;
-	height: 40px;
+	width: 40px;
+	height: 275px;
 	margin: 0px;
-}
-
-#slider svg {
-	width: 500px;
-	height: 100px;
-	margin-top: 0px
 }
 
 path {
@@ -57,6 +51,7 @@ path {
         fill: #aaa;
         font-weight: 200;
         letter-spacing: -1px;
+        opacity: .6;
 }
 .labels.segment {
         font-size: 10px;
