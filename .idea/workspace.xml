@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="758e7e52-1f97-4ba0-b7af-75f2cb70a9a9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/appsubmissions/test2" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/appleimg.jpg" afterPath="$PROJECT_DIR$/app/appleimg.jpg" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/appleimg.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/appsubmissions/stacked.html" afterPath="$PROJECT_DIR$/app/appsubmissions/stacked.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/appsubmissions/submissions.html" afterPath="$PROJECT_DIR$/app/appsubmissions/submissions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/home.css" afterPath="$PROJECT_DIR$/app/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/appprices/appPrice.html" afterPath="$PROJECT_DIR$/app/appprices/appPrice.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/smallMult/index.html" afterPath="$PROJECT_DIR$/app/smallMult/index.html" />
     </list>
     <ignored path="applemetrics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +25,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="4" selection-start="565" selection-end="604" vertical-scroll-proportion="-8.125">
+            <state line="15" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.28920308">
               <folding />
             </state>
           </provider>
@@ -56,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stacked.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="stacked.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/appsubmissions/stacked.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="24" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.77792555">
+            <state line="47" column="24" selection-start="1283" selection-end="1283" vertical-scroll-proportion="-11.7">
               <folding />
             </state>
           </provider>
@@ -95,7 +91,7 @@
       <file leaf-file-name="appPrice.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/appprices/appPrice.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="-9.375">
               <folding />
             </state>
           </provider>
@@ -124,12 +120,12 @@
         <option value="$PROJECT_DIR$/app/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/app/appcount/style.css" />
         <option value="$PROJECT_DIR$/app/appcount/circles.html" />
-        <option value="$PROJECT_DIR$/app/appprices/appPrice.html" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/home.css" />
         <option value="$PROJECT_DIR$/app/appsubmissions/submissions.html" />
         <option value="$PROJECT_DIR$/app/smallMult/index.html" />
         <option value="$PROJECT_DIR$/app/appsubmissions/stacked.html" />
+        <option value="$PROJECT_DIR$/app/appprices/appPrice.html" />
+        <option value="$PROJECT_DIR$/app/index.html" />
       </list>
     </option>
   </component>
@@ -277,24 +273,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="applemetrics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="applemetrics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appsubmissions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -313,9 +291,9 @@
       <recent name="$PROJECT_DIR$/app/css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/smallMult" />
       <recent name="$PROJECT_DIR$/app/appcount" />
-      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/js" />
       <recent name="$PROJECT_DIR$/app/appsubmissions" />
     </key>
@@ -441,21 +419,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/appleimg.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/appcount/circles.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/appprices/appPrice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -470,20 +436,6 @@
     <entry file="file://$PROJECT_DIR$/app/appcount/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="24" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="19" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="565" selection-end="604" vertical-scroll-proportion="-8.125">
           <folding />
         </state>
       </provider>
@@ -511,7 +463,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/appsubmissions/stacked.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="24" selection-start="1283" selection-end="1283" vertical-scroll-proportion="0.77792555">
+        <state line="47" column="24" selection-start="1283" selection-end="1283" vertical-scroll-proportion="-11.7">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/appprices/appPrice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="-9.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/appleimg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="19" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="0.28920308">
           <folding />
         </state>
       </provider>
