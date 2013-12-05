@@ -75,6 +75,7 @@ a:hover {
 }
 
 #totalInfo {
+	padding-top: 10px;
 	opacity: .6;
 }
 
@@ -89,14 +90,22 @@ a:hover {
 }
 
 #labelInfo {
-	font-size: 12px;
+	font-size: 23px;
 	text-align: center;
 	padding-top: 40px;
 	opacity: .6;
 }
 
+#zeroInfo {
+	font-size: 20px;
+	text-align: center;
+	padding-top: 10px;
+	opacity: .6;
+	word-wrap: normal;
+}
+
 #appDif, #gameDif {
-	font-size: 12px;
+	font-size: 23px;
 	text-align: center;
 	opacity: .6;
 }

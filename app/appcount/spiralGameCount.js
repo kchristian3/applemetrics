@@ -68,7 +68,7 @@ function spiralGameCount() {
                 .data(radialLabels).enter()
                 .append("text")
                 .append("textPath")
-                .style("opacity","0")
+                .style("opacity",".6")
                 .attr("id", "gameLabelText")
                 .attr("xlink:href", function(d, i) {return "#gameRadial-label-path-"+gameID+"-"+i;})
                 .style("font-size", 0.4 * segmentGameHeight + 'px')
@@ -91,7 +91,7 @@ function spiralGameCount() {
                 .data(segmentLabels).enter()
                 .append("text")
                 .append("textPath")
-                .style("opacity", "0")
+                .style("opacity", ".6")
                 .attr("id", "gameLabelText")
                 .attr("xlink:href", "#gameSegment-label-path-"+gameID)
                 .attr("startOffset", function(d, i) {

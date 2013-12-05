@@ -69,7 +69,7 @@ function spiralAppCount() {
                 .data(radialLabels).enter()
                 .append("text")
                 .append("textPath")
-                .style("opacity", "0")
+                .style("opacity", ".6")
                 .attr("id", "appLabelText")
                 .attr("xlink:href", function(d, i) {return "#appRadial-label-path-"+appID+"-"+i;})
                 .style("font-size", 0.4 * (segmentAppHeight + scaleAngle) + 'px')
@@ -92,7 +92,7 @@ function spiralAppCount() {
                 .data(segmentLabels).enter()
                 .append("text")
                 .append("textPath")
-                .style("opacity", "0")
+                .style("opacity", ".6")
                 .attr("id", "appLabelText")
                 .attr("xlink:href", "#appSegment-label-path-"+appID)
                 .attr("startOffset", function(d, i) {

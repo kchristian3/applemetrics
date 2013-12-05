@@ -17,7 +17,7 @@ var chartA = spiralAppCount()
 	.accessor(function(d) {
 		return d.value;
 	})
-    .segmentAppHeight(25)
+    .segmentAppHeight(23)
     .innerRadius(50)
     .numAppSegments(12)
     .radialLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
@@ -28,7 +28,7 @@ var chartG = spiralGameCount()
 	.accessor(function(d) {
 		return d.value;
 	})
-    .segmentGameHeight(25)
+    .segmentGameHeight(23)
     .innerRadius(50)
     .numGameSegments(12)
     .radialLabels(["2008", "2009", "2010", "2011", "2012", "2013"])
@@ -307,33 +307,33 @@ d3.selectAll("#spiralAppCount path")
 	.on('mouseover', function() {
         var d = d3.select(this).data()[0];
     	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});
-    	d3.selectAll('#appLabelText').style("opacity",".6");	
-    	highlight(d.date, d.indx, d.circle);
+    	//d3.selectAll('#appLabelText').style("opacity",".6");	
+    	highlight(d.date, d.year, d.indx, d.circle);
 	});
 
 d3.selectAll("#spiralAppCount path")
 	.on('mouseout', function() { 
     	d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});
-    	d3.selectAll('#appLabelText').style("opacity","0");
-    	highlight(null,0,null);  
+    	//d3.selectAll('#appLabelText').style("opacity","0");
+    	highlight(null, null, 0,null);  
 });
 
 d3.selectAll("#spiralGameCount path")
 	.on('mouseover', function() {
         var d = d3.select(this).data()[0];
     	d3.select(this).style({ 'stroke': 'Black', 'stroke-width': '3px'});
-    	d3.selectAll('#gameLabelText').style("opacity",".6");		
-    	highlight(d.date, d.indx, d.circle);
+    	//d3.selectAll('#gameLabelText').style("opacity",".6");		
+    	highlight(d.date, d.year, d.indx, d.circle);
 	});
 
 d3.selectAll("#spiralGameCount path")
 	.on('mouseout', function() {
     	d3.select(this).style({ 'stroke': 'none', 'stroke-width': 'none'});
-    	d3.selectAll('#gameLabelText').style("opacity","0");	
-    	highlight(null, 0, null);   
+    	//d3.selectAll('#gameLabelText').style("opacity","0");	
+    	highlight(null, 0, 0, null);   
 });
 
-function highlight(date, id, circle) {
+function highlight(date, year, id, circle) {
   if (date == null) {
   	d3.select("#yearInfo").text("" + energyDataA[68].year);
   	d3.select("#monthInfo").text("" + energyDataG[68].month);
@@ -341,6 +341,7 @@ function highlight(date, id, circle) {
 	d3.select("#totalInfo").text("" + energyDataG[68].value);
 	d3.select("#appDif").text(Math.ceil((energyDataA[68].value/energyDataT[68].value)*100) + "%");
 	d3.select("#gameDif").text(Math.ceil((energyDataG[68].value/energyDataT[68].value)*100) + "%");
+	d3.select("#zeroInfo").text("");
 	d3.select("#appInfo")
 		.text("" + energyDataA[68].value)
 		.style("opacity", ".6");
@@ -351,8 +352,18 @@ function highlight(date, id, circle) {
   else {
   	d3.select("#yearInfo").text("" + energyDataA[id].year);
   	d3.select("#monthInfo").text("" + energyDataG[id].month);
-  	d3.select("#appDif").text(Math.ceil((energyDataA[id].value/energyDataT[id].value)*100) + "%");
-	d3.select("#gameDif").text(Math.ceil((energyDataG[id].value/energyDataT[id].value)*100) + "%");
+  	if(energyDataA[id].value == 0){
+  		d3.select("#appDif").text("N/A");
+		d3.select("#gameDif").text("N/A");
+		if(year == "2008"){
+			d3.select("#zeroInfo").text("App store opened July 2008");
+		} else {
+			d3.select("#zeroInfo").text("Current month data collected at end of month");
+		}
+	} else {
+		d3.select("#appDif").text(Math.ceil((energyDataA[id].value/energyDataT[id].value)*100) + "%");
+		d3.select("#gameDif").text(Math.ceil((energyDataG[id].value/energyDataT[id].value)*100) + "%");
+	}
   	d3.selectAll(".date." + date).classed("active", true);
   	if(circle == 0){
   		d3.select("#totalInfo").text("" + energyDataT[id].value);
