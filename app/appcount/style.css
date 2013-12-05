@@ -1,16 +1,19 @@
 /* Document styling */
 body {
-        width: 1250px;;
+        /*width: 1250px;;*/
         margin: 0px 50px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
         line-height: 20px;
 }
 section {
+
         display: inline-flex;
         height: 450px;
-        width: 1120px;
-        padding-left: 15px;
+        width: 100%;
+        padding-left: 18%;
+        padding-top: 20px;
+
 }
 h1 {
         font-size: 40px;

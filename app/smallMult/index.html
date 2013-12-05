@@ -17,8 +17,6 @@
 
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
-
-<body>
 <div class="navbar">
     <a class="navbar-brand" href="../index.html">App Store Metrics</a>
     <ul class="nav navbar-nav" ng-controller="NavCtrl">
@@ -28,16 +26,14 @@
         <li ng-class="navClass('price')"><a href="#../aboutus.html">About Us</a></li>
     </ul>
 </div>
+<body>
+
   <div id="container" class="container">
-    <!--<header>-->
-    <!--<h1>App Submissions</h1>-->
-    <!--<h2>Apple App Store Metrics</h2>-->
-    <!--</header>-->
     <div id="main" role="main">
       <div id="vis">
         <div id="previews"></div>
         <div id="detail" class="hidden">
-          <div id="detail_panel">
+          <div id="detail_panel" >
             <svg width="900" height="900">
             <g id="detail_view"></g>
             </svg>
@@ -45,8 +41,7 @@
         </div>
       </div>
     </div>
-    <div id="legend">
-    </div>
+
   </div> <!--! end of #container -->
 
 
@@ -60,6 +55,8 @@
   <script src="js/tooltip.js"></script>
   <script type="text/coffeescript" src="coffee/vis.coffee"></script>
 
-
+  <div id="key" style="padding-left:10%" >
+      <img src="key.png">
+  </div>
 </body>
 </html>
