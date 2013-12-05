@@ -42,49 +42,49 @@
             "name": "Jun",
             "value": 3,
             "value2": 11,
-            "percent_world": 5
+            "percent_world": 0.0001
         },
       {
         "code": "Jul",
         "name": "Jul",
         "value": 326,
         "value2":996,
-        "percent_world": 0.059
+        "percent_world": 0.0936
       },
       {
         "code": "Aug",
         "name": "Aug",
         "value": 334,
         "value2":1069,
-        "percent_world": 0.305
+        "percent_world": 0.0993
       },
       {
         "code": "Sept",
         "name": "Sept",
         "value": 465,
         "value2":1475,
-        "percent_world": 0.258
+        "percent_world": 0.137
       },
       {
         "code": "Oct",
         "name": "Oct",
         "value": 596,
           "value2":2063,
-        "percent_world": 0.014
+        "percent_world": 0.188
       },
       {
         "code": "Nov",
         "name": "Nov",
         "value": 674,
           "value2":2312,
-        "percent_world": 0.0
+        "percent_world": 0.2116
       },
       {
         "code": "Dec",
         "name": "Dec",
         "value": 817,
           "value2":2971,
-        "percent_world": 0.03
+        "percent_world": 0.2681
       }
     ]
   },
