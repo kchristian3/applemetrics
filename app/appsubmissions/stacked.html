@@ -6,7 +6,10 @@
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="tipsy.js"></script>
     <link rel="stylesheet" type="text/css" href="tipsy.css">
+      <link rel="stylesheet" href="../css/bootstrap.css">
+
     <style type="text/css">
+
 
 svg {
   /*width: 1580px;
@@ -30,9 +33,24 @@ svg {
 
     </style>
   </head>
+  <div class="navbar">
+      <a class="navbar-brand" href="../index.html">App Store Metrics</a>
+      <ul class="nav navbar-nav" ng-controller="NavCtrl">
+          <li ng-class="navClass('count')"><a href="../appcount/circles.html">App Count</a></li>
+          <li class="active" ng-class="navClass('submissions')"><a href="../smallMult/index.html">Submissions</a></li>
+          <li ng-class="navClass('price')"><a href="../appprices/appPrice.html">App Prices</a></li>
+
+      </ul>
+  </div>
   <div id="container">
     </div>
   <body>
+  <div id="viewButtons" >
+      <p><a href="../smallMult/index.html" class="btn btn-primary btn-lg" role="button">View 1</a></p>
+      <p><a href="#" class="btn btn-primary btn-lg active" role="button">View 2</a></p>
+
+  </div>
+
     <div id = "graph">
     </div>
     <div id ="xAxisLabel">
@@ -177,5 +195,7 @@ $('rect').tipsy({
         });
 });
     </script>
+
+
   </body>
 </html>
