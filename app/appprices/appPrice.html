@@ -188,8 +188,8 @@
         .range(["#01939A", "#FF0700"]);
 
         var arc = d3.svg.arc()
-            .outerRadius(radius - 10)
-            .innerRadius(radius - 40);
+            .outerRadius(radius)
+            .innerRadius(radius - 45);
 
         var pie = d3.layout.pie()
             .sort(null)
