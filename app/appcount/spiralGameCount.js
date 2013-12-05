@@ -4,6 +4,8 @@ function spiralGameCount() {
     innerRadius = 50,
     numGameSegments = 24,
     segmentGameHeight = 20,
+    indx = 0,
+    labelOpacity = "0",
     domain = null,
     range = ["white", "#FF0700"],
     accessor = function(d) {return d;},
@@ -32,7 +34,11 @@ function spiralGameCount() {
             g.selectAll("path").data(data)
                 .enter().append("path")
                 .attr("class", function(d) { return "date " + d.date;})
-                .attr("id", function(d) { return "gameSpiral";})
+                .attr("id", function(d) { 
+                	var ret =  "date " + d.date + " " + indx;
+                	indx++;
+                	return ret;
+                })
                 .attr("d", d3.svg.arc().innerRadius(irGame).outerRadius(orGame).startAngle(saGame).endAngle(eaGame))
                 .attr("fill", function(d) {return gameColor(accessor(d));});
 
@@ -62,8 +68,10 @@ function spiralGameCount() {
                 .data(radialLabels).enter()
                 .append("text")
                 .append("textPath")
+                .style("opacity","0")
+                .attr("id", "gameLabelText")
                 .attr("xlink:href", function(d, i) {return "#gameRadial-label-path-"+gameID+"-"+i;})
-                .style("font-size", 0.6 * segmentGameHeight + 'px')
+                .style("font-size", 0.4 * segmentGameHeight + 'px')
                 .text(function(d) {return d;});
 
             //Segment labels
@@ -83,6 +91,8 @@ function spiralGameCount() {
                 .data(segmentLabels).enter()
                 .append("text")
                 .append("textPath")
+                .style("opacity", "0")
+                .attr("id", "gameLabelText")
                 .attr("xlink:href", "#gameSegment-label-path-"+gameID)
                 .attr("startOffset", function(d, i) {
                 	var ret;
@@ -127,6 +137,12 @@ function spiralGameCount() {
     chartA.scaleAngle = function(_) {
         if (!arguments.length) return scaleAngle;
         scaleAngle = (_ * Math.PI)/180;
+        return chartA;
+    };
+    
+    chartA.labelOpacity = function(_) {
+        if (!arguments.length) return labelOpacity;
+        labelOpacity = _;
         return chartA;
     };
 

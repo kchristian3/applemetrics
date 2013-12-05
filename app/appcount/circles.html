@@ -9,36 +9,71 @@
         </head>
 
         <body>
-        	<div id="info"></div>
                 <section>
         		<!--Remove Total circle
                     <div class="chart" id="spiralTotalCount"></div>
                 -->
+                	<table id="gradient">
+            			<tr>
+            				<td id="gRangeNum">727641</td>
+            			</tr>
+            			<tr>
+            				<td id="appBar"></td>
+            			</tr>
+            			<tr>
+            				<td id="gRangeNum">0</td>
+            			</tr>
+            		</table>
                     <div class="chart" id="spiralAppCount"></div>
+                    <div id="allInfo">
+                    	<table>
+                    		<tr>
+                    			<td id="yearInfo"></td>
+                    		</tr>
+                    		<tr>
+                    			<td id="monthInfo"></td>
+                    		</tr>
+                    		<tr>
+                    			<td id="totalInfo"></td>
+                    		</tr>
+                    		<tr id="labelInfo">
+                    			<td>Total</td>
+                    		</tr>
+                    		<tr>
+                    			<td id="appInfo"></td>
+                    		</tr>
+                    		<tr id="labelInfo">
+                    			<td style="color: #01939A;">Apps</td>
+                    		</tr>
+                    		<tr>
+                    			<td id="gameInfo"></td>
+                    		</tr>
+                    		<tr id="labelInfo">
+                    			<td style="color: #FF0700;">Games</td>
+                    		</tr>
+                    	</table>
+                    </div>
                     <div class="chart" id="spiralGameCount"></div>
+                    <table id="gradient">
+            			<tr>
+            				<td id="gRangeNum">166510</td>
+            			</tr>
+            			<tr>
+            				<td id="gameBar"></td>
+            			</tr>
+            			<tr>
+            				<td id="gRangeNum">0</td>
+            			</tr>
+            		</table>
                 </section>
-                
-            <table id="gradient">
-            	<tr>
-            		<td>0</td>
-            		<td id="appBar"></td>
-            		<td>727641</td>
-            	</tr>
-            	<tr>
-            		<td>0</td>
-            		<td id="gameBar"></td>
-            		<td>166510</td>
-            	</tr>
-            </table>
+
             <!---Remove slider
             <div id="slider"></div>
             <div id="slider3text"></div>
             --->
                 <script src="http://d3js.org/d3.v3.min.js"></script>
-                <script src="d3.slider.js"></script>
                 <script src="spiralAppCount.js"></script>
                 <script src="spiralGameCount.js"></script>
-                <script src="spiralTotalCount.js"></script>
                 <script src="appGradient.js"></script>
                 <script src="gameGradient.js"></script>
                 <script src="example.js"></script>
