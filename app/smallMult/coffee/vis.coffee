@@ -165,16 +165,16 @@ SmallMults = () ->
       .attr("font-size", 7)
 
     # add values above bars
-    graph.selectAll(".amount")
-      .data(d.values).enter()
-      .append("text")
-      .attr("class", "amount")
-      .text((d) -> if d.value == 0 then "No Data" else shortenNumber(d.value))
-      .attr("text-anchor", "middle")
-      .attr("y", (d) -> (graphHeight - yScale(d.value) - yPadding))
-      .attr("dy", (d) -> if yScale(d.value) < 10 then "-0.3em" else "1.1em")
-      .attr("x", (d) -> xScale(d.name) + xScale.rangeBand() / 2)
-      .attr("font-size", 5)
+#    graph.selectAll(".amount")
+#      .data(d.values).enter()
+#      .append("text")
+#      .attr("class", "amount")
+#      .text((d) -> if d.value == 0 then "No Data" else shortenNumber(d.value))
+#      .attr("text-anchor", "middle")
+#      .attr("y", (d) -> (graphHeight - yScale(d.value) - yPadding))
+#      .attr("dy", (d) -> if yScale(d.value) < 10 then "-0.3em" else "1.1em")
+#      .attr("x", (d) -> xScale(d.name) + xScale.rangeBand() / 2)
+#      .attr("font-size", 5)
 
   # ---
   # Shows the detail view for a given element
