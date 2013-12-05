@@ -6,9 +6,19 @@
             <link rel="stylesheet" href="style.css">
             <link rel="stylesheet" href="svg.css">
                 <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+            <link rel="stylesheet" href="../css/bootstrap.css">
         </head>
 
         <body>
+        <div class="navbar">
+            <a class="navbar-brand" href="../index.html">App Store Metrics</a>
+            <ul class="nav navbar-nav" ng-controller="NavCtrl">
+                <li class="active" ng-class="navClass('count')"><a href="../appcount/circles.html">App Count</a></li>
+                <li ng-class="navClass('submissions')"><a href="../smallMult/index.html">Submissions</a></li>
+                <li ng-class="navClass('price')"><a href="../appprices/appPrice.html">App Prices</a></li>
+                <li ng-class="navClass('price')"><a href="../aboutus.html">About Us</a></li>
+            </ul>
+        </div>
         	<div id="info"></div>
                 <section>
         		<!--Remove Total circle
