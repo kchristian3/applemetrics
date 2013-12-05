@@ -274,7 +274,7 @@ SmallMults = () ->
     graph.selectAll(".subtitle")
       .data([d]).enter()
       .append("text")
-      .text("#{formatNumber(d.percent_world * 100)}% of Total Submissions")
+      .text("#{formatNumber(d.percent_world * 100)}% of Total Submissions That Year")
       .attr("class", "subtitle")
       .attr("fill", (d) -> colorScale(d.name))
       .attr("text-anchor", "middle")

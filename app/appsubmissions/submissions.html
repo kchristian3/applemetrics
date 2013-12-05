@@ -5,6 +5,7 @@
   <head>
       <script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
       <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <link rel="stylesheet" href="../css/bootstrap.css">
 
 <script src="topojson.v0.min.js"></script>
 <style type="text/css">
@@ -19,14 +20,33 @@ path.line {
   stroke: #666;
   stroke-width: 1.5px;
 }
-
+#mainVis{
+    padding-left: 10%;
+}
 path.area {
   fill: #e7e7e7;
 }
 
     </style>
   </head>
+
+  <div class="navbar">
+      <a class="navbar-brand" href="../index.html">App Store Metrics</a>
+      <ul class="nav navbar-nav" ng-controller="NavCtrl">
+          <li ng-class="navClass('count')"><a href="../appcount/circles.html">App Count</a></li>
+          <li class="active" ng-class="navClass('submissions')"><a href="../smallMult/index.html">Submissions</a></li>
+          <li ng-class="navClass('price')"><a href="../appprices/appPrice.html">App Prices</a></li>
+
+      </ul>
+  </div>
+  <div id="viewButtons">
+      <p><a href="../smallMult/index.html" class="btn btn-primary btn-lg" role="button">View 1</a></p>
+      <p><a href="stacked.html" class="btn btn-primary btn-lg" role="button">View 2</a></p>
+      <p><a href="#" class="btn btn-primary btn-lg active" role="button">View 3</a></p>
+  </div>
 <body>
+    <div id="mainVis">
+
     <script type="text/javascript">
 
 var m = [8, 10, 2, 10],
@@ -106,5 +126,6 @@ d3.csv("smallMult.csv", function(data) {
 });
 
     </script>
+    </div>
   </body>
 </html>

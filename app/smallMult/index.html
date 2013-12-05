@@ -7,6 +7,9 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <script src="js/jquery-2.0.3.min.js"></script>
 
   <!-- CSS concatenated and minified via ant build script-->
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
@@ -15,19 +18,23 @@
 
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
+<div class="navbar">
+    <a class="navbar-brand" href="../index.html">App Store Metrics</a>
+    <ul class="nav navbar-nav" ng-controller="NavCtrl">
+        <li ng-class="navClass('count')"><a href="../appcount/circles.html">App Count</a></li>
+        <li class="active" ng-class="navClass('submissions')"><a href="../smallMult/index.html">Submissions</a></li>
+        <li ng-class="navClass('price')"><a href="../appprices/appPrice.html">App Prices</a></li>
 
+    </ul>
+</div>
 <body>
 
   <div id="container" class="container">
-    <header>
-    <h1>App Submissions</h1>
-    <h2>Apple App Store Metrics</h2>
-    </header>
     <div id="main" role="main">
       <div id="vis">
         <div id="previews"></div>
         <div id="detail" class="hidden">
-          <div id="detail_panel">
+          <div id="detail_panel" >
             <svg width="900" height="900">
             <g id="detail_view"></g>
             </svg>
@@ -35,8 +42,7 @@
         </div>
       </div>
     </div>
-    <div id="legend">
-    </div>
+
   </div> <!--! end of #container -->
 
 
@@ -50,6 +56,13 @@
   <script src="js/tooltip.js"></script>
   <script type="text/coffeescript" src="coffee/vis.coffee"></script>
 
+  <div id="key" style="padding-left:10%" >
+      <img src="key.png">
+  </div>
+  <div id="viewButtons">
+      <p><a href="#" class="btn btn-primary btn-lg active" role="button">View 1</a></p>
+      <p><a href="../appsubmissions/stacked.html" class="btn btn-primary btn-lg" role="button">View 2</a></p>
 
+  </div>
 </body>
 </html>
