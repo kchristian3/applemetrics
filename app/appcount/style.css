@@ -73,22 +73,26 @@ a:hover {
 
 #totalInfo {
 	opacity: .6;
-	padding-top: 50px;
 }
 
 #appInfo {
 	color: #01939A;
-	padding-top: 50px;
 	opacity: .6;
 }
 
 #gameInfo {
 	color: #FF0700;
-	padding-top: 50px;
 	opacity: .6;
 }
 
 #labelInfo {
+	font-size: 12px;
+	text-align: center;
+	padding-top: 40px;
+	opacity: .6;
+}
+
+#appDif, #gameDif {
 	font-size: 12px;
 	text-align: center;
 	opacity: .6;
