@@ -18,11 +18,11 @@
 </div>
     <h3>App Prices</h3>
     <h3 id="priceText">Please select a fan or a price</h3>
+    <span id="price" style=" margin-left: 350px; margin-top: 50px;"></span>
     <center>
     <div>
-    <span id="price" style="float:left; margin-top: 100px;"></span>
     <div id="mainInfo"  style="margin-top:-100px"></div>
-    <span id="partialInfo"></span>
+    <div id="partialInfo" style=" margin-top:-200px; margin-right: 220px;"></div>
     </div>
     </center>    
     <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -81,8 +81,6 @@
 
             d3.selectAll(".arc")
             .filter(function(d){
-                if (thisPriceData.appPrice==d.data.appPrice)
-                    console.log("in "+thisPriceData.appPrice);
                 return (thisPriceData.appPrice==d.data.appPrice);
             })
             .attr("stroke","black")
@@ -115,6 +113,9 @@
                 return (thisPriceData.appPrice==d.data.appPrice);
             }) 
             .attr("stroke","none");
+
+             d3.select("#priceText")
+                .text("Please select a fan or a price");
 
             cleanPartialInfo();
         });
